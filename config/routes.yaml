@@ -1,0 +1,29 @@
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+homepage:
+   path:        /
+   controller:  App\Controller\DefaultController::homepage
+
+task_list:
+   path:        /tasks
+   controller:  App\Controller\TasksController::tasks
+
+task_detail:
+    path:        /task/{task}
+    controller:  App\Controller\TasksController::task
+
+project_list:
+    path:        /projects
+    controller:  App\Controller\ProjectsController::projects
+
+admin_default:
+    path:        /admin
+    controller:  App\Controller\AdminController::default
+
+admin_user_list:
+    path:        /users.json
+    controller:  App\Controller\AdminController::jsonUserList
+    options:
+        expose: true

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Task {{task.getID()}} {% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1 class="py-1">
+            {{task.getTitle()}}
+        </h1>
+        <h5 class="pb-4">
+            by {{task.getAuthor().getName()}}
+        </h5>
+        <blockquote class="blockquote text-center">
+            <p class="mb-2">{{task.getDescription()|nl2br()}}</p>
+            <footer class="blockquote-footer">Priority : {{task.getPriority()}}</footer>
+        </blockquote>
+
+        {{form(form)}}
+    </div>
+</div>
+
+{% endblock %}

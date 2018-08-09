@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tasks List {% endblock %}
+
+{% block body %}
+
+<div class="jumbotron text-center bg-white">
+    {% if tasks is empty %}
+        <p>There are currently no tasks available</p>
+    {% else %}
+        <table class="table table-striped container">
+            <thead>
+                <tr class="bg-secondary text-white">
+                    <th>Creation Date</th>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{task.getCreationDate()|date('Y-m-d H:i:s')}}</td>
+                        <td>{{task.getAuthor().getName()}}</td>
+                        <td>{{task.getTitle()}}</td>
+                        <td>{{task.getDescription()|length > 50 ? task.getDescription()|slice(0, 50) ~ '[...]' : task.getDescription()}}</td>
+                        <td>{{task.getPriority()}}</td>
+                        <td>
+                            <a href="{{path("task_detail",{'task': task.getId()})}}">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <div class="container border border-dark rounded my-3">
+		{{ form(task_form) }}
+	</div>
+</div>
+{% endblock %}

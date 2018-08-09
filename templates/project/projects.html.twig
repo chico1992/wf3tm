@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}wf3tm list of projects{% endblock %}
+
+{% block body %}
+	
+	{% if projects is empty %}
+		<p>No projects found in the application</p>
+	{% else %}
+		<table class="container table table-striped">
+			<thead>
+				<tr>
+					<th>Creation date</th>
+					<th>Title</th>
+					<th>Responsible</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for project in projects %}
+					<tr>
+						<td>{{ project.getCreationDate()|date('Y-m-d H:i:s') }}</td>
+						<td>{{ project.getTitle() }}</td>
+						<td>{{ project.getResponsible().getName() }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+	<div class="container border border-dark rounded my-3">
+		{{ form(project_form) }}
+	</div>
+
+{% endblock %}

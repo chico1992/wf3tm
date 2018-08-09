@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}wf3tm admin{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="users">
+            </tbody>
+        </table>
+        {{ form(user_form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    
+    <script type="text/javascript" src="{{asset('js/listUser.js')}}"></script>
+{% endblock %}

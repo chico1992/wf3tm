@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    {# comment #}
+    {% if isLogged == true %}
+        <p>Hello</p>
+    {% else %}
+        <p>Please, login</p>
+    {% endif %}
+
+    {{ dump(elements) }}
+
+    {{ date()|date('Y-m-d H:i:s') }}
+
+    <ul>
+        {% for key, element in elements %}
+            {% if loop.index0 is even %}
+                <li style="color: red;">{{ element }}</li>
+            {% else %}
+                <li>{{ element }}</li>
+            {% endif %}
+        {% else %}
+            <p>message</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{project.getTitle()}} {% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <blockquote class="blockquote text-center">
+            <h1 class="py-1">
+                {{project.getTitle()}}
+            </h1>
+            <footer class="blockquote-footer">Creation Date : {{project.getCreationDate()|date("m/d/Y")}}</footer>
+        </blockquote>
+        <h5 class="pb-4">
+            Responsible: {{project.getResponsible().getName()}} || {{project.getResponsible().getResponsability()}}
+        </h5>
+        <ul class="list-group">
+            {% for worker in project.getWorkers() %}
+                <li class="list-group-item list-group-item-info">
+                    {{worker.getName()}} || {{worker.getResponsability()}}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{path("task_list")}}">
+            Click here to see the tasks
+        </a>
+    </div>
+</div>
+
+{% endblock %}
