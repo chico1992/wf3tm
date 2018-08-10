@@ -4,6 +4,9 @@
 
 {% block body %}
 
+<div class="container border border-dark rounded my-3">
+    {{ form(searchForm) }}
+</div>
 <div class="jumbotron text-center bg-white">
     {% if tasks is empty %}
         <p>There are currently no tasks available</p>
