@@ -21,7 +21,7 @@
 					<tr>
 						{% if project.getThumbnail() is not empty %}
 							<td>
-								<img src="{{path('download_document' , {'document' : project.getThumbnail.getId()})}}" >
+								<img src="{{path('download_document' , {'document' : project.getThumbnail.getId()})}}" style="width:80px;" >
 							</td>
 						{% else %}
 							<td></td>
