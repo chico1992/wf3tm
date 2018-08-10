@@ -34,3 +34,7 @@ admin_user_list:
     controller:  App\Controller\AdminController::jsonUserList
     options:
         expose: true
+
+download_document:
+    path:       /document/{document}
+    controller: App\Controller\DefaultController::downloadDocument

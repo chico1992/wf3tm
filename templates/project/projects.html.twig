@@ -10,6 +10,7 @@
 		<table class="container table table-striped">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Creation date</th>
 					<th>Title</th>
 					<th>Responsible</th>
@@ -18,6 +19,13 @@
 			<tbody>
 				{% for project in projects %}
 					<tr>
+						{% if project.getThumbnail() is not empty %}
+							<td>
+								<img src="{{path('download_document' , {'document' : project.getThumbnail.getId()})}}" >
+							</td>
+						{% else %}
+							<td></td>
+						{% endif %}
 						<td>{{ project.getCreationDate()|date('Y-m-d H:i:s') }}</td>
 						<td>{{ project.getTitle() }}</td>
 						<td>{{ project.getResponsible().getName() }}</td>

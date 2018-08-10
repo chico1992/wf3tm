@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use App\Entity\Document;
 
 class DefaultController extends Controller
 {
@@ -29,5 +31,16 @@ class DefaultController extends Controller
                 'error'         => $error,
             )
         );
+    }
+
+    public function downloadDocument(Document $document)
+    {
+        $fileName = sprintf(
+            '%s/%s',
+            $document->getPath(),
+            $document->getName()
+        );
+
+        return new BinaryFileResponse($fileName);
     }
 }

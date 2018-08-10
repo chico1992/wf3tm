@@ -49,6 +49,13 @@ class Project
      */
     private $creationDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Document")
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\File(mimeTypes={ "image/*"})
+     */
+    private $thumbnail;
+
     public function __construct()
     {
         $this->worker = new ArrayCollection();
@@ -145,6 +152,18 @@ class Project
     public function getCreationDate(): ?\DateTimeInterface
     {
         return $this->creationDate;
+    }
+
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail($thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
     }
 
 }
