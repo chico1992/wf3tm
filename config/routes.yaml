@@ -3,8 +3,15 @@
 #    controller: App\Controller\DefaultController::index
 
 homepage:
-   path:        /
-   controller:  App\Controller\DefaultController::homepage
+    path:       /
+    controller: App\Controller\DefaultController::homepage
+
+login:
+    path:       /login
+    controller: App\Controller\DefaultController::login
+
+logout:
+    path: /logout
 
 task_list:
    path:        /tasks

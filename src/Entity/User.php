@@ -129,11 +129,12 @@ class User implements UserInterface
 
     /**
      * Get the value of role
-     * @return Collection|Task[]
+     * @return Role[]
      */ 
-    public function getRoles(): Collection
+    public function getRoles(): array
     {
-        return $this->roles;
+        
+        return array_map('strval',$this->roles->toArray());
     }
 
     public function addRole(Role $role): self

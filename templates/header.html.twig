@@ -4,15 +4,28 @@
             <div>
                 <a class="navbar-brand text-light m-1" href="{{path("homepage")}}">My App</a>
             </div>
+            {% if is_granted('ROLE_USER') %}
             <div>
                 <a class="btn btn-secondary m-1" href="{{path("task_list")}}">Tasks</a>
             </div>
             <div>
                 <a class="btn btn-secondary m-1" href="{{path("project_list")}}">Projects</a>
             </div>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div>
+                    <a class="btn btn-secondary m-1" href="{{path('logout')}}">Logout</a>
+                </div>
+            {% else %}
+                <div>
+                    <a class="btn btn-secondary m-1" href="{{path('login')}}">Login</a>
+                </div>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
             <div>
                 <a class="btn btn-secondary m-1" href="{{path("admin_default")}}">Administration</a>
             </div>
+            {% endif %}
         </div>
     </nav>
 </header>
